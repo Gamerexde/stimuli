@@ -24,7 +24,7 @@ public abstract class PlayerManagerMixin {
     @Nullable
     public abstract ServerPlayerEntity getPlayer(UUID uuid);
 
-    @Inject(method = "broadcast(Lnet/minecraft/text/Text;Lnet/minecraft/network/MessageType;Ljava/util/UUID;)V", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "broadcastChatMessage", at = @At("HEAD"), cancellable = true)
     public void broadcastChatMessage(Text message, MessageType type, UUID senderId, CallbackInfo ci) {
         if (this.handleChatMessage(message, type, senderId)) {
             ci.cancel();

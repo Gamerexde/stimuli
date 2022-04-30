@@ -1,6 +1,5 @@
 package xyz.nucleoid.stimuli;
 
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
@@ -11,6 +10,8 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.TypedActionResult;
+import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import xyz.nucleoid.stimuli.event.block.BlockBreakEvent;
 import xyz.nucleoid.stimuli.event.block.BlockUseEvent;
 import xyz.nucleoid.stimuli.event.entity.EntityUseEvent;
@@ -19,7 +20,7 @@ import xyz.nucleoid.stimuli.event.player.PlayerAttackEntityEvent;
 
 public final class StimuliInitializer implements ModInitializer {
     @Override
-    public void onInitialize() {
+    public void onInitialize(ModContainer mod) {
         UseEntityCallback.EVENT.register((player, world, hand, entity, hit) -> {
             if (player instanceof ServerPlayerEntity serverPlayer) {
                 try (var invokers = Stimuli.select().forEntityAt(player, entity.getBlockPos())) {

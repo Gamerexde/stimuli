@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "xyz.nucleoid",
+    "id": "stimuli",
+    "version": "${version}",
+    "metadata": {
+      "name": "Stimuli",
+      "description": "Library to work with server-side events with the ability to filter by event source",
+      "contributors": {
+        "nucleoid_contributors": "Owner"
+      }
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "xyz.nucleoid.stimuli.StimuliInitializer"
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.16.0-"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=1.0.0-"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=1.18.2"
+      }
+    ]
+  },
+  "mixin": "stimuli.mixins.json"
+}
